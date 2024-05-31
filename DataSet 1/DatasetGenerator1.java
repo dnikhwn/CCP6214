@@ -12,7 +12,7 @@ public class DatasetGenerator1 {
 
     public static void main(String[] args) {
         // Use the current system time as the seed
-        long seed = System.currentTimeMillis();
+        long seed = 1201103464;
 
         // Define set sizes
         int[] setSizes = {100, 1000, 10000, 100000, 500000, 1000000};
