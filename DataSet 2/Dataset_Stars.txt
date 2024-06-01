@@ -1,0 +1,140 @@
+Star: Star A, Coordinates: (95, 15, 22), Weight: 13, Profit: 89
+  Connected to Star M with distance 93
+  Connected to Star B with distance 54
+  Connected to Star J with distance 77
+  Connected to Star C with distance 83
+  Connected to Star N with distance 55
+Star: Star B, Coordinates: (88, 8, 76), Weight: 26, Profit: 92
+  Connected to Star A with distance 54
+  Connected to Star P with distance 62
+  Connected to Star R with distance 72
+  Connected to Star S with distance 91
+  Connected to Star G with distance 94
+  Connected to Star J with distance 77
+  Connected to Star N with distance 54
+Star: Star C, Coordinates: (58, 89, 33), Weight: 28, Profit: 50
+  Connected to Star A with distance 83
+  Connected to Star D with distance 57
+  Connected to Star Q with distance 41
+  Connected to Star K with distance 79
+  Connected to Star O with distance 98
+Star: Star D, Coordinates: (90, 69, 77), Weight: 10, Profit: 30
+  Connected to Star C with distance 57
+  Connected to Star H with distance 84
+  Connected to Star K with distance 91
+  Connected to Star N with distance 79
+  Connected to Star E with distance 54
+  Connected to Star Q with distance 78
+Star: Star E, Coordinates: (37, 60, 88), Weight: 22, Profit: 44
+  Connected to Star N with distance 64
+  Connected to Star K with distance 71
+  Connected to Star D with distance 54
+  Connected to Star G with distance 21
+  Connected to Star P with distance 90
+  Connected to Star S with distance 20
+Star: Star F, Coordinates: (56, 33, 92), Weight: 58, Profit: 50
+  Connected to Star L with distance 60
+  Connected to Star I with distance 102
+  Connected to Star K with distance 66
+  Connected to Star H with distance 94
+Star: Star G, Coordinates: (20, 73, 84), Weight: 48, Profit: 10
+  Connected to Star K with distance 77
+  Connected to Star E with distance 21
+  Connected to Star B with distance 94
+  Connected to Star P with distance 102
+  Connected to Star Q with distance 38
+  Connected to Star R with distance 82
+  Connected to Star T with distance 30
+Star: Star H, Coordinates: (78, 36, 0), Weight: 85, Profit: 56
+  Connected to Star D with distance 84
+  Connected to Star P with distance 23
+  Connected to Star O with distance 111
+  Connected to Star F with distance 94
+  Connected to Star K with distance 61
+Star: Star I, Coordinates: (5, 67, 10), Weight: 12, Profit: 55
+  Connected to Star F with distance 102
+  Connected to Star K with distance 62
+  Connected to Star J with distance 49
+  Connected to Star N with distance 75
+  Connected to Star M with distance 115
+  Connected to Star S with distance 93
+Star: Star J, Coordinates: (34, 56, 48), Weight: 26, Profit: 85
+  Connected to Star A with distance 77
+  Connected to Star I with distance 49
+  Connected to Star N with distance 44
+  Connected to Star P with distance 63
+  Connected to Star B with distance 77
+Star: Star K, Coordinates: (30, 15, 33), Weight: 87, Profit: 97
+  Connected to Star D with distance 91
+  Connected to Star E with distance 71
+  Connected to Star F with distance 66
+  Connected to Star G with distance 77
+  Connected to Star I with distance 62
+  Connected to Star H with distance 61
+  Connected to Star C with distance 79
+  Connected to Star S with distance 90
+  Connected to Star L with distance 23
+  Connected to Star Q with distance 73
+Star: Star L, Coordinates: (29, 38, 38), Weight: 0, Profit: 96
+  Connected to Star F with distance 60
+  Connected to Star K with distance 23
+  Connected to Star M with distance 71
+  Connected to Star O with distance 55
+  Connected to Star P with distance 53
+Star: Star M, Coordinates: (41, 0, 97), Weight: 60, Profit: 66
+  Connected to Star A with distance 93
+  Connected to Star L with distance 71
+  Connected to Star P with distance 89
+  Connected to Star I with distance 115
+  Connected to Star Q with distance 101
+  Connected to Star T with distance 105
+Star: Star N, Coordinates: (44, 13, 45), Weight: 60, Profit: 11
+  Connected to Star D with distance 79
+  Connected to Star E with distance 64
+  Connected to Star I with distance 75
+  Connected to Star J with distance 44
+  Connected to Star A with distance 55
+  Connected to Star Q with distance 77
+  Connected to Star B with distance 54
+  Connected to Star R with distance 49
+Star: Star O, Coordinates: (11, 22, 88), Weight: 26, Profit: 53
+  Connected to Star H with distance 111
+  Connected to Star L with distance 55
+  Connected to Star Q with distance 75
+  Connected to Star C with distance 98
+  Connected to Star P with distance 95
+Star: Star P, Coordinates: (74, 19, 16), Weight: 52, Profit: 3
+  Connected to Star B with distance 62
+  Connected to Star H with distance 23
+  Connected to Star J with distance 63
+  Connected to Star M with distance 89
+  Connected to Star O with distance 95
+  Connected to Star G with distance 102
+  Connected to Star E with distance 90
+  Connected to Star L with distance 53
+  Connected to Star S with distance 109
+Star: Star Q, Coordinates: (19, 86, 48), Weight: 28, Profit: 89
+  Connected to Star C with distance 41
+  Connected to Star M with distance 101
+  Connected to Star N with distance 77
+  Connected to Star O with distance 75
+  Connected to Star D with distance 78
+  Connected to Star K with distance 73
+  Connected to Star G with distance 38
+  Connected to Star T with distance 28
+Star: Star R, Coordinates: (67, 49, 20), Weight: 73, Profit: 87
+  Connected to Star B with distance 72
+  Connected to Star G with distance 82
+  Connected to Star S with distance 90
+  Connected to Star N with distance 49
+Star: Star S, Coordinates: (32, 77, 99), Weight: 84, Profit: 73
+  Connected to Star B with distance 91
+  Connected to Star K with distance 90
+  Connected to Star R with distance 90
+  Connected to Star I with distance 93
+  Connected to Star P with distance 109
+  Connected to Star E with distance 20
+Star: Star T, Coordinates: (4, 95, 71), Weight: 10, Profit: 98
+  Connected to Star M with distance 105
+  Connected to Star G with distance 30
+  Connected to Star Q with distance 28

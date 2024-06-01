@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,6 +10,7 @@ class Star {
     int x, y, z;
     int weight;
     int profit;
+    List<Connection> connections;
 
     public Star(String name, int x, int y, int z, int weight, int profit) {
         this.name = name;
@@ -15,6 +19,7 @@ class Star {
         this.z = z;
         this.weight = weight;
         this.profit = profit;
+        this.connections = new ArrayList<>();
     }
 
     // Function to calculate distance between two stars
@@ -22,6 +27,23 @@ class Star {
         return (int) Math.sqrt(Math.pow(this.x - otherStar.x, 2) +
                          Math.pow(this.y - otherStar.y, 2) +
                          Math.pow(this.z - otherStar.z, 2));
+    }
+
+    // Function to add a connection to another star
+    public void addConnection(Star otherStar, int distance) {
+        this.connections.add(new Connection(this, otherStar, distance));
+    }
+}
+
+class Connection {
+    Star star1;
+    Star star2;
+    int distance;
+
+    public Connection(Star star1, Star star2, int distance) {
+        this.star1 = star1;
+        this.star2 = star2;
+        this.distance = distance;
     }
 }
 
@@ -38,10 +60,17 @@ public class StarConquestGenerator {
         // Connect stars with routes
         connectStars(stars, random);
 
-        // Display generated data
-        for (Star star : stars) {
-            System.out.println("Star: " + star.name + ", Coordinates: (" + star.x + ", " + star.y + ", " + star.z +
-                    "), Weight: " + star.weight + ", Profit: " + star.profit);
+        // Output generated data to a file
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Dataset_Stars.txt"))) {
+            for (Star star : stars) {
+                writer.println("Star: " + star.name + ", Coordinates: (" + star.x + ", " + star.y + ", " + star.z +
+                        "), Weight: " + star.weight + ", Profit: " + star.profit);
+                for (Connection connection : star.connections) {
+                    writer.println("  Connected to " + connection.star2.name + " with distance " + connection.distance);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,8 +97,8 @@ public class StarConquestGenerator {
                 Star otherStar = stars.get(random.nextInt(stars.size()));
                 if (otherStar != star && !areConnected(star, otherStar)) {
                     int distance = star.calculateDistance(otherStar);
-                    // Create route/connection between stars (not implemented in this code)
-                    // You can store the connections in a separate data structure or class
+                    star.addConnection(otherStar, distance);
+                    otherStar.addConnection(star, distance); // Ensure bidirectional connection
                     System.out.println("Connected " + star.name + " to " + otherStar.name + " with distance " + distance);
                     connections++;
                 }
@@ -79,8 +108,11 @@ public class StarConquestGenerator {
 
     // Function to check if two stars are already connected
     public static boolean areConnected(Star star1, Star star2) {
-        // Implement this function based on your data structure for connections/routes
-        return false; // Placeholder
+        for (Connection connection : star1.connections) {
+            if (connection.star2 == star2) {
+                return true;
+            }
+        }
+        return false;
     }
 }
-
