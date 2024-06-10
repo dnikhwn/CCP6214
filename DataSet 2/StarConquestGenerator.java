@@ -62,12 +62,13 @@ public class StarConquestGenerator {
 
         // Output generated data to a file
         try (PrintWriter writer = new PrintWriter(new FileWriter("Dataset_Stars.txt"))) {
+            writer.write("|Star Name | X  | Y  | Z  |Weight|Profit|Connected Stars (Star,Distance)|\n");
             for (Star star : stars) {
-                writer.println("Star: " + star.name + ", Coordinates: (" + star.x + ", " + star.y + ", " + star.z +
-                        "), Weight: " + star.weight + ", Profit: " + star.profit);
+                writer.print("|  " + star.name + "  | " + star.x + " | " + star.y + " | " + star.z + " |  " + star.weight + "  |  " + star.profit + "  | ");
                 for (Connection connection : star.connections) {
-                    writer.println("  Connected to " + connection.star2.name + " with distance " + connection.distance);
+                    writer.print("(" + connection.star2.name + "," + connection.distance + "), ");
                 }
+                writer.write("|\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,7 +100,6 @@ public class StarConquestGenerator {
                     int distance = star.calculateDistance(otherStar);
                     star.addConnection(otherStar, distance);
                     otherStar.addConnection(star, distance); // Ensure bidirectional connection
-                    System.out.println("Connected " + star.name + " to " + otherStar.name + " with distance " + distance);
                     connections++;
                 }
             }
