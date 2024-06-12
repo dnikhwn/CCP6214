@@ -60,15 +60,15 @@ public class StarConquestGenerator {
         // Connect stars with routes
         connectStars(stars, random);
 
-        // Output generated data to a file
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Dataset_Stars.txt"))) {
-            writer.write("|Star Name | X  | Y  | Z  |Weight|Profit|Connected Stars (Star,Distance)|\n");
+        // Output generated data to a CSV file
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Dataset_Stars.csv"))) {
+            writer.write("Star Name,X,Y,Z,Weight,Profit,Connected Stars (Star Name:Distance)\n");
             for (Star star : stars) {
-                writer.print("|  " + star.name + "  | " + star.x + " | " + star.y + " | " + star.z + " |  " + star.weight + "  |  " + star.profit + "  | ");
+                writer.print(star.name + "," + star.x + "," + star.y + "," + star.z + "," + star.weight + "," + star.profit + ",");
                 for (Connection connection : star.connections) {
-                    writer.print("(" + connection.star2.name + "," + connection.distance + "), ");
+                    writer.print(connection.star2.name + ":" + connection.distance + "; ");
                 }
-                writer.write("|\n");
+                writer.write("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();

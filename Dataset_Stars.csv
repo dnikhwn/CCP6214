@@ -1,0 +1,21 @@
+Star Name,X,Y,Z,Weight,Profit,Connected Stars (Star Name:Distance)
+Star A,95,15,22,13,89,Star M:93; Star B:54; Star J:77; Star C:83; Star N:55; 
+Star B,88,8,76,26,92,Star A:54; Star P:62; Star R:72; Star S:91; Star G:94; Star J:77; Star N:54; 
+Star C,58,89,33,28,50,Star A:83; Star D:57; Star Q:41; Star K:79; Star O:98; 
+Star D,90,69,77,10,30,Star C:57; Star H:84; Star K:91; Star N:79; Star E:54; Star Q:78; 
+Star E,37,60,88,22,44,Star N:64; Star K:71; Star D:54; Star G:21; Star P:90; Star S:20; 
+Star F,56,33,92,58,50,Star L:60; Star I:102; Star K:66; Star H:94; 
+Star G,20,73,84,48,10,Star K:77; Star E:21; Star B:94; Star P:102; Star Q:38; Star R:82; Star T:30; 
+Star H,78,36,0,85,56,Star D:84; Star P:23; Star O:111; Star F:94; Star K:61; 
+Star I,5,67,10,12,55,Star F:102; Star K:62; Star J:49; Star N:75; Star M:115; Star S:93; 
+Star J,34,56,48,26,85,Star A:77; Star I:49; Star N:44; Star P:63; Star B:77; 
+Star K,30,15,33,87,97,Star D:91; Star E:71; Star F:66; Star G:77; Star I:62; Star H:61; Star C:79; Star S:90; Star L:23; Star Q:73; 
+Star L,29,38,38,0,96,Star F:60; Star K:23; Star M:71; Star O:55; Star P:53; 
+Star M,41,0,97,60,66,Star A:93; Star L:71; Star P:89; Star I:115; Star Q:101; Star T:105; 
+Star N,44,13,45,60,11,Star D:79; Star E:64; Star I:75; Star J:44; Star A:55; Star Q:77; Star B:54; Star R:49; 
+Star O,11,22,88,26,53,Star H:111; Star L:55; Star Q:75; Star C:98; Star P:95; 
+Star P,74,19,16,52,3,Star B:62; Star H:23; Star J:63; Star M:89; Star O:95; Star G:102; Star E:90; Star L:53; Star S:109; 
+Star Q,19,86,48,28,89,Star C:41; Star M:101; Star N:77; Star O:75; Star D:78; Star K:73; Star G:38; Star T:28; 
+Star R,67,49,20,73,87,Star B:72; Star G:82; Star S:90; Star N:49; 
+Star S,32,77,99,84,73,Star B:91; Star K:90; Star R:90; Star I:93; Star P:109; Star E:20; 
+Star T,4,95,71,10,98,Star M:105; Star G:30; Star Q:28; 
