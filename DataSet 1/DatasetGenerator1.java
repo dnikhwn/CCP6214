@@ -15,7 +15,7 @@ public class DatasetGenerator1 {
         long seed = 1201103464;
 
         // Define set sizes
-        int[] setSizes = {100, 1000, 10000, 100000, 500000, 1000000};
+        int[] setSizes = {100, 1000, 5000, 10000, 50000, 100000, 500000, 1000000};
 
         // Create a new Random object with the current system time as the seed
         Random random = new Random(seed);
