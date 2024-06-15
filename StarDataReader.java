@@ -20,6 +20,7 @@ class Star {
     int profit;
     List<Connection> connections;
 
+    // Constructor to initialize a Star object
     public Star(String name, int x, int y, int z, int weight, int profit) {
         this.name = name;
         this.x = x;
@@ -37,6 +38,7 @@ class Star {
                 Math.pow(this.z - otherStar.z, 2));
     }
 
+    // Function to add a connection to another star with a specified distance
     public void addConnection(Star otherStar, int distance) {
         if (distance <= 0) { // If distance is not provided or invalid, calculate it
             distance = this.calculateDistance(otherStar);
@@ -63,6 +65,7 @@ class Connection {
     Star star2;
     int distance;
 
+    // Constructor to initialize a Connection object
     public Connection(Star star1, Star star2, int distance) {
         this.star1 = star1;
         this.star2 = star2;
@@ -72,7 +75,7 @@ class Connection {
 
 public class StarDataReader {
     public static void main(String[] args) {
-        String csvFile = "Dataset_Stars.csv";
+        String csvFile = "Dataset_Stars.csv"; // Path to the CSV file containing star data
         String line;
         String cvsSplitBy = ",";
         List<Star> stars = new ArrayList<>();
@@ -89,6 +92,7 @@ public class StarDataReader {
                 int profit = Integer.parseInt(data[5].trim());
                 String[] connectedStars = data[6].trim().split("; ");
                 List<Connection> connections = new ArrayList<>();
+                // Parse the connected stars and their distances
                 System.out.println("Name: " + name + ", X: " + x + ", Y: " + y + ", Z: " + z + ", Weight: " + weight
                         + ", Profit: " + profit);
                 for (String connectedStar : connectedStars) {
@@ -170,11 +174,13 @@ public class StarDataReader {
         return false;
     }
 
+    // Dijkstra's Algorithm to find the shortest path from a source star
     public static Map<Star, Integer> dijkstra(Star source) {
         PriorityQueue<StarDistance> queue = new PriorityQueue<>(Comparator.comparingInt(sd -> sd.distance));
         Map<Star, Integer> distances = new HashMap<>();
         Set<Star> visited = new HashSet<>();
 
+        // Initialize distances and add the source to the queue
         distances.put(source, 0);
         queue.add(new StarDistance(source, 0));
 
@@ -186,6 +192,7 @@ public class StarDataReader {
             }
             visited.add(current);
 
+            // Process each neighbor of the current star
             for (Connection connection : current.connections) {
                 Star neighbor = connection.star2;
                 int newDistance = distances.get(current) + connection.distance;
@@ -209,12 +216,14 @@ public class StarDataReader {
         }
     }
 
+    // Kruskal's Algorithm to find the Minimum Spanning Tree (MST)
     public static List<Connection> kruskal(List<Star> stars) {
         List<Connection> result = new ArrayList<>();
         List<Connection> connections = new ArrayList<>();
         Set<Star> visited = new HashSet<>();
         int totalCost = 0;
 
+        // Collect all connections
         for (Star star : stars) {
             visited.add(star);
             for (Connection connection : star.connections) {
@@ -224,10 +233,12 @@ public class StarDataReader {
             }
         }
 
+        // Sort connections by distance
         connections.sort(Comparator.comparingInt(c -> c.distance));
 
         DisjointSet disjointSet = new DisjointSet(stars);
 
+        // Process connections in order
         for (Connection connection : connections) {
             Star star1 = connection.star1;
             Star star2 = connection.star2;
@@ -249,6 +260,7 @@ public class StarDataReader {
         return result;
     }
 
+    // Function to print and save Kruskal's results
     public static void printAndSaveKruskalResult(String fileName, List<Connection> result, int totalCost) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             for (Connection connection : result) {
@@ -261,6 +273,7 @@ public class StarDataReader {
         }
     }
 
+    // Function to print and save Dijkstra's results
     public static void printAndSaveDijkstraResult(String fileName, List<Map<Star, Integer>> result) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             for (int i = 0; i < result.size(); i++) {
