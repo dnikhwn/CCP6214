@@ -40,6 +40,8 @@ public class StarConquestKnapsack {
 
     int remainingCapacity = maxCapacity;
     List<Integer> selectedStars = new ArrayList<>();
+    int totalWeight = 0;
+    int totalProfit = 0;
 
     // Backtrack to find the selected stars
     for (int i = numStars; i > 0; i--) {
@@ -47,15 +49,22 @@ public class StarConquestKnapsack {
         int starIndex = i - 1;
         selectedStars.add(starIndex);
         remainingCapacity -= weights[starIndex];
+        totalWeight += weights[starIndex];
+        totalProfit += values[starIndex];
       }
     }
 
-    // Print the selected stars
-    outputWriter.println("Selected Star Indices: " + selectedStars);
-    outputWriter.println("Selected Star Names: ");
+    // Print the selected stars with their weights and profits
+    outputWriter.println("Selected Stars:");
+    outputWriter.println(String.format("%-20s%-10s%-10s", "Star Name", "Weight", "Profit"));
+    outputWriter.println(String.format("%-20s%-10s%-10s", "---------", "------", "------"));
     for (int index : selectedStars) {
-      outputWriter.println(starNames.get(index));
+      outputWriter.println(String.format("%-20s%-10d%-10d", starNames.get(index), weights[index], values[index]));
     }
+
+    // Print the cumulative weight and profit
+    outputWriter.println("\nTotal Weight: " + totalWeight);
+    outputWriter.println("Total Profit: " + totalProfit);
 
     // Return the maximum profit
     return dpTable[numStars][maxCapacity];
