@@ -6,7 +6,7 @@ import java.util.Random;
 public class DatasetGenerator1 {
 
     // Allowed digits 
-    // Leader Student ID = 1201103071
+    // Leader Student ID = 1201103464
     private static final char[] ALLOWED_DIGITS = {'0', '1', '2', '3', '4', '6'};
     private static final char[] NON_ZERO_DIGITS = {'1', '2', '3', '4', '6'};
 
