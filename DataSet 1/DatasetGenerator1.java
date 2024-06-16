@@ -11,7 +11,6 @@ public class DatasetGenerator1 {
     private static final char[] NON_ZERO_DIGITS = {'1', '2', '3', '4', '6'};
 
     public static void main(String[] args) {
-        // Use the current system time as the seed
         long seed = 1201103464;
 
         // Define set sizes

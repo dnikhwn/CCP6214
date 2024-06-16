@@ -80,11 +80,11 @@ public class StarConquestGenerator {
         List<Star> stars = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             String name = "Star " + (char) ('A' + i);
-            int x = random.nextInt(100); // Can change range as needed
-            int y = random.nextInt(100); // Can change range as needed
-            int z = random.nextInt(100); // Can change range as needed
-            int weight = random.nextInt(100); // Can change range as needed
-            int profit = random.nextInt(100); // Can change range as needed
+            int x = random.nextInt(100); 
+            int y = random.nextInt(100); 
+            int z = random.nextInt(100); 
+            int weight = random.nextInt(100); 
+            int profit = random.nextInt(100); 
             stars.add(new Star(name, x, y, z, weight, profit));
         }
         return stars;
