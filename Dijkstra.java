@@ -85,9 +85,13 @@ public class Dijkstra {
         if (starA != null) {
             // Run Dijkstra's Algorithm for D_Star A
             Map<D_Star, DijkstraResult> distances = dijkstra(starA, stars);
-
+    
             // Print and save Dijkstra's results for D_Star A only
             printAndSaveDijkstraResult("Dijkstra_Result.txt", starA, distances);
+    
+            // Print Dijkstra's results for Star A directly
+            System.out.println("Dijkstra's results for Star A:");
+            printDijkstraResult(starA, distances);
         } else {
             System.out.println("Star A not found in the dataset.");
         }
@@ -219,6 +223,32 @@ public class Dijkstra {
             e.printStackTrace();
         }
     }
+
+    // Function to print Dijkstra's results for a specific star
+public static void printDijkstraResult(D_Star source, Map<D_Star, DijkstraResult> result) {
+    for (Map.Entry<D_Star, DijkstraResult> entry : result.entrySet()) {
+        D_Star destination = entry.getKey();
+        DijkstraResult dijkstraResult = entry.getValue();
+
+        System.out.println("Shortest Distance from " + source.name + " to " + destination.name + ": "
+                + dijkstraResult.distance);
+        System.out.print("Shortest Path from " + source.name + " to " + destination.name + ": ");
+
+        List<D_Star> path = dijkstraResult.path;
+        if (path.isEmpty()) {
+            System.out.println("None");
+        } else {
+            for (int i = 0; i < path.size(); i++) {
+                System.out.print(path.get(i).name);
+                if (i < path.size() - 1) {
+                    System.out.print(" -> ");
+                }
+            }
+            System.out.println(" -> " + destination.name);
+        }
+    }
+}
+
 
     static class StarDistance {
         D_Star star;
