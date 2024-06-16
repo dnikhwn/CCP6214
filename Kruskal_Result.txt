@@ -1,0 +1,21 @@
+Star E -> Star S, Distance: 20
+Star S -> Star E, Distance: 20
+Star G -> Star E, Distance: 21
+Star H -> Star P, Distance: 23
+Star K -> Star L, Distance: 23
+Star L -> Star K, Distance: 23
+Star P -> Star H, Distance: 23
+Star Q -> Star T, Distance: 28
+Star T -> Star Q, Distance: 28
+Star C -> Star Q, Distance: 41
+Star J -> Star N, Distance: 44
+Star N -> Star J, Distance: 44
+Star I -> Star J, Distance: 49
+Star R -> Star N, Distance: 49
+Star A -> Star B, Distance: 54
+Star B -> Star A, Distance: 54
+Star D -> Star E, Distance: 54
+Star O -> Star L, Distance: 55
+Star F -> Star L, Distance: 60
+Star M -> Star L, Distance: 71
+Total cost of MST: 784

@@ -1,0 +1,40 @@
+Shortest Distance from Star A to Star T: 152
+Shortest Path from Star A to Star T: Star A -> Star C -> Star Q -> Star T
+Shortest Distance from Star A to Star G: 140
+Shortest Path from Star A to Star G: Star A -> Star N -> Star E -> Star G
+Shortest Distance from Star A to Star D: 134
+Shortest Path from Star A to Star D: Star A -> Star N -> Star D
+Shortest Distance from Star A to Star C: 83
+Shortest Path from Star A to Star C: Star A -> Star C
+Shortest Distance from Star A to Star I: 126
+Shortest Path from Star A to Star I: Star A -> Star J -> Star I
+Shortest Distance from Star A to Star H: 139
+Shortest Path from Star A to Star H: Star A -> Star B -> Star P -> Star H
+Shortest Distance from Star A to Star E: 119
+Shortest Path from Star A to Star E: Star A -> Star N -> Star E
+Shortest Distance from Star A to Star L: 164
+Shortest Path from Star A to Star L: Star A -> Star M -> Star L
+Shortest Distance from Star A to Star A: 0
+Shortest Path from Star A to Star A: None
+Shortest Distance from Star A to Star S: 139
+Shortest Path from Star A to Star S: Star A -> Star N -> Star E -> Star S
+Shortest Distance from Star A to Star Q: 124
+Shortest Path from Star A to Star Q: Star A -> Star C -> Star Q
+Shortest Distance from Star A to Star F: 224
+Shortest Path from Star A to Star F: Star A -> Star M -> Star L -> Star F
+Shortest Distance from Star A to Star P: 116
+Shortest Path from Star A to Star P: Star A -> Star B -> Star P
+Shortest Distance from Star A to Star K: 162
+Shortest Path from Star A to Star K: Star A -> Star C -> Star K
+Shortest Distance from Star A to Star N: 55
+Shortest Path from Star A to Star N: Star A -> Star N
+Shortest Distance from Star A to Star O: 181
+Shortest Path from Star A to Star O: Star A -> Star C -> Star O
+Shortest Distance from Star A to Star M: 93
+Shortest Path from Star A to Star M: Star A -> Star M
+Shortest Distance from Star A to Star B: 54
+Shortest Path from Star A to Star B: Star A -> Star B
+Shortest Distance from Star A to Star J: 77
+Shortest Path from Star A to Star J: Star A -> Star J
+Shortest Distance from Star A to Star R: 104
+Shortest Path from Star A to Star R: Star A -> Star N -> Star R

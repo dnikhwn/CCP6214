@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Set;
 
@@ -73,7 +72,7 @@ class Connection {
     }
 }
 
-public class StarDataReader {
+public class Kruskal {
     public static void main(String[] args) {
         String csvFile = "Dataset_Stars.csv"; // Path to the CSV file containing star data
         String line;
@@ -91,18 +90,9 @@ public class StarDataReader {
                 int weight = Integer.parseInt(data[4].trim());
                 int profit = Integer.parseInt(data[5].trim());
                 String[] connectedStars = data[6].trim().split("; ");
-                List<Connection> connections = new ArrayList<>();
                 // Parse the connected stars and their distances
                 System.out.println("Name: " + name + ", X: " + x + ", Y: " + y + ", Z: " + z + ", Weight: " + weight
                         + ", Profit: " + profit);
-                for (String connectedStar : connectedStars) {
-                    String[] parts = connectedStar.split(":");
-                    String connectedStarName = parts[0].trim();
-                    String distanceStr = parts[1].trim().replaceAll("[^0-9]", ""); // Remove non-numeric characters
-                    int distance = Integer.parseInt(distanceStr);
-                    System.out.println("Connected Star: " + connectedStarName + ", Distance: " + distance);
-                    connections.add(new Connection(null, new Star(connectedStarName, 0, 0, 0, 0, 0), distance));
-                }
                 Star star = new Star(name, x, y, z, weight, profit);
                 for (String connectedStar : connectedStars) {
                     String[] parts = connectedStar.split(":");
@@ -118,22 +108,6 @@ public class StarDataReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Run Dijkstra's Algorithm
-        List<Map<Star, Integer>> dijkstraResult = new ArrayList<>();
-        for (Star star : stars) {
-            Map<Star, Integer> distances = dijkstra(star);
-            dijkstraResult.add(distances);
-        }
-        System.out.println("Dijkstra's Result:");
-        for (int i = 0; i < dijkstraResult.size(); i++) {
-            Map<Star, Integer> distances = dijkstraResult.get(i);
-            System.out.println("From Star " + (char) ('A' + i) + ":");
-            for (Map.Entry<Star, Integer> entry : distances.entrySet()) {
-                System.out.println("  to " + entry.getKey().name + ", Distance: " + entry.getValue());
-            }
-        }
-        printAndSaveDijkstraResult("Dijkstra_Result.txt", dijkstraResult);
 
         // Run Kruskal's Algorithm
         List<Connection> kruskalResult = kruskal(stars);
@@ -174,38 +148,6 @@ public class StarDataReader {
         return false;
     }
 
-    // Dijkstra's Algorithm to find the shortest path from a source star
-    public static Map<Star, Integer> dijkstra(Star source) {
-        PriorityQueue<StarDistance> queue = new PriorityQueue<>(Comparator.comparingInt(sd -> sd.distance));
-        Map<Star, Integer> distances = new HashMap<>();
-        Set<Star> visited = new HashSet<>();
-
-        // Initialize distances and add the source to the queue
-        distances.put(source, 0);
-        queue.add(new StarDistance(source, 0));
-
-        while (!queue.isEmpty()) {
-            StarDistance currentSD = queue.poll();
-            Star current = currentSD.star;
-            if (visited.contains(current)) {
-                continue;
-            }
-            visited.add(current);
-
-            // Process each neighbor of the current star
-            for (Connection connection : current.connections) {
-                Star neighbor = connection.star2;
-                int newDistance = distances.get(current) + connection.distance;
-                Integer currentDistance = distances.get(neighbor);
-                if (currentDistance == null || newDistance < currentDistance) {
-                    distances.put(neighbor, newDistance);
-                    queue.add(new StarDistance(neighbor, newDistance));
-                }
-            }
-        }
-        return distances;
-    }
-
     static class StarDistance {
         Star star;
         int distance;
@@ -213,6 +155,16 @@ public class StarDataReader {
         StarDistance(Star star, int distance) {
             this.star = star;
             this.distance = distance;
+        }
+    }
+
+    static class DijkstraResult {
+        int distance;
+        List<Star> path;
+
+        DijkstraResult(int distance, List<Star> path) {
+            this.distance = distance;
+            this.path = path;
         }
     }
 
@@ -268,22 +220,6 @@ public class StarDataReader {
                         connection.star1.name + " -> " + connection.star2.name + ", Distance: " + connection.distance);
             }
             writer.println("Total cost of MST: " + totalCost);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Function to print and save Dijkstra's results
-    public static void printAndSaveDijkstraResult(String fileName, List<Map<Star, Integer>> result) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            for (int i = 0; i < result.size(); i++) {
-                Map<Star, Integer> distances = result.get(i);
-                writer.println("From Star " + (char) ('A' + i) + ":");
-                for (Map.Entry<Star, Integer> entry : distances.entrySet()) {
-                    writer.println("  to " + entry.getKey().name + ", Distance: " + entry.getValue());
-                }
-                writer.println();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
