@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 class Star {
@@ -122,65 +121,20 @@ public class Kruskal {
 
     }
 
-    // Function to connect stars with routes
-    public static void connectStars(List<Star> stars, Random random) {
-        for (Star star : stars) {
-            int connections = 0;
-            while (connections < 3) {
-                Star otherStar = stars.get(random.nextInt(stars.size()));
-                if (otherStar != star && !areConnected(star, otherStar)) {
-                    int distance = star.calculateDistance(otherStar);
-                    star.addConnection(otherStar, distance);
-                    otherStar.addConnection(star, distance); // Ensure bidirectional connection
-                    connections++;
-                }
-            }
-        }
-    }
-
-    // Function to check if two stars are already connected
-    public static boolean areConnected(Star star1, Star star2) {
-        for (Connection connection : star1.connections) {
-            if (connection.star2 == star2) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    static class StarDistance {
-        Star star;
-        int distance;
-
-        StarDistance(Star star, int distance) {
-            this.star = star;
-            this.distance = distance;
-        }
-    }
-
-    static class DijkstraResult {
-        int distance;
-        List<Star> path;
-
-        DijkstraResult(int distance, List<Star> path) {
-            this.distance = distance;
-            this.path = path;
-        }
-    }
-
-    // Kruskal's Algorithm to find the Minimum Spanning Tree (MST)
     public static List<Connection> kruskal(List<Star> stars) {
         List<Connection> result = new ArrayList<>();
         List<Connection> connections = new ArrayList<>();
-        Set<Star> visited = new HashSet<>();
-        int totalCost = 0;
+        Set<String> addedEdges = new HashSet<>();
 
         // Collect all connections
         for (Star star : stars) {
-            visited.add(star);
             for (Connection connection : star.connections) {
-                if (!visited.contains(connection.star2)) {
+                String edge1 = star.name + " -- " + connection.star2.name;
+                String edge2 = connection.star2.name + " -- " + star.name;
+                if (!addedEdges.contains(edge1) && !addedEdges.contains(edge2)) {
                     connections.add(connection);
+                    addedEdges.add(edge1);
+                    addedEdges.add(edge2);
                 }
             }
         }
@@ -196,28 +150,25 @@ public class Kruskal {
             Star star2 = connection.star2;
             if (disjointSet.find(star1) != disjointSet.find(star2)) {
                 result.add(connection);
-                totalCost += connection.distance;
                 disjointSet.union(star1, star2);
             }
         }
 
+        int totalCost = result.stream().mapToInt(c -> c.distance).sum();
+
         System.out.println("Following are the edges of the constructed MST:");
         for (Connection connection : result) {
-            System.out.println(connection.star1.name + " -- "
-                    + connection.star2.name + " == "
-                    + connection.distance);
+            System.out.println(connection.star1.name + " -- " + connection.star2.name + " == " + connection.distance);
         }
         System.out.println("Total cost of MST: " + totalCost);
 
         return result;
     }
 
-    // Function to print and save Kruskal's results
     public static void printAndSaveKruskalResult(String fileName, List<Connection> result, int totalCost) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             for (Connection connection : result) {
-                writer.println(
-                        connection.star1.name + " -> " + connection.star2.name + ", Distance: " + connection.distance);
+                writer.println(connection.star1.name + " -> " + connection.star2.name + ", Distance: " + connection.distance);
             }
             writer.println("Total cost of MST: " + totalCost);
         } catch (IOException e) {
