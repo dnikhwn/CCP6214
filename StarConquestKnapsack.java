@@ -25,7 +25,7 @@ public class StarConquestKnapsack {
       int currentValue = values[i - 1];
 
       for (int cap = 1; cap <= maxCapacity; cap++) {
-        // Option 1: Do not take the current star
+        // Option 1: Exclude the current star
         dpTable[i][cap] = dpTable[i - 1][cap];
 
         // Option 2: Take the current star (if it fits)
